@@ -39,6 +39,11 @@ nav li a {
     text-decoration: none;
     color: #0d47a1
 }
+@media only screen and (max-width: 750px) {
+    .parag {
+        color: darkred;
+    }
+}
 @media only screen and (max-width: 600px) {
     nav {
     flex-direction: column;
@@ -53,5 +58,6 @@ nav li a {
     .parag {
         font-size: 1.5rem;
         margin-bottom: 50px;
+        color: rgb(34, 150, 34);
     }
 }

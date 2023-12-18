@@ -33,22 +33,52 @@ $manager = new UtilisateursManager($bddPDO);
     </nav>
 
 
-    <!--<p><a href="index.php">Accéder à l'accueil du site</a></p>-->
 
-        <table>
-            <tr><th>Nom</th><th>Prenom</th><th>Tel</th><th>Email</th></tr>
+<!--<p><h1>Formulaire de modification</h1></p>-->
+
+    <form action="admin.php" method="post">
+        <table class="formulaire">
+
+        <?php if(isset($erreurs) && in_array(Utilisateurs::NOM_INVALIDE, $erreurs))
+        echo "Nom invalide..<br>" ?>
+            <tr><td>Nom: </td><td><input type="text" name="nom" /></td></tr>
+
+        <?php if(isset($erreurs) && in_array(Utilisateurs::PRENOM_INVALIDE, $erreurs))
+        echo "Prenom invalide..<br>" ?>
+            <tr><td>Prenom: </td><td><input type="text" name="prenom" /></td></tr>
+            
+            <tr><td>Telephone: </td><td><input type="text" name="tel" /></td></tr>
+
+        <?php if(isset($erreurs) && in_array(Utilisateurs::MAIL_INVALIDE, $erreurs))
+        echo "Email invalide..<br>" ?>
+            <tr><td>Email: </td><td><input type="text" name="mail" /></td></tr>
+
+            <tr><td><input type="submit" value="Enregistrer" name="enregistrer" /></td></tr>
+        </table>
+    </form>
+
+
+        <table class="table">
+            <tr><th>Nom</th><th>Prenom</th><th>Tel</th><th>Email</th><th>Modifications</th></tr>
 
             <?php
 
                 foreach ($manager->getListeUtilisateurs() as $utilisateur)
                 {
-                    echo '<tr><td>', $utilisateur->getNom(),'</td><td>',
-                    $utilisateur->getPrenom(),'</td><td>',
-                    $utilisateur->getTel(),'</td><td>',
-                    $utilisateur->getMail(),'</td></tr>';
+                    echo '<tr><td>
+                    ', $utilisateur->getNom(),'
+                    </td><td>
+                    ',$utilisateur->getPrenom(),'
+                    </td><td>
+                    ',$utilisateur->getTel(),'
+                    </td><td>
+                    ',$utilisateur->getMail(),'
+                    </td><td><a href="?modifier=',$utilisateur->getId(),'">Modifier</a></td>
+                    </tr>';
                 }
 
             ?>
         </table>
+
 </body>
 </html>

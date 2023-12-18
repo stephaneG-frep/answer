@@ -86,11 +86,14 @@ nav li a {
     form {
         padding: 20px;
         box-shadow: none;
+        background-color: rgb(12, 134, 118);
     }
     h1 {
         font-size: 2rem;
     }
     td {
         font-size: 0.8rem;
+        color:burlywood;
+        background-color: darkgoldenrod;
     }
 }
