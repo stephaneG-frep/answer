@@ -90,10 +90,11 @@ nav li a {
     }
     h1 {
         font-size: 2rem;
+        color: midnightblue;
     }
     td {
         font-size: 0.8rem;
-        color:burlywood;
+        color:rgb(165, 43, 6);
         background-color: darkgoldenrod;
     }
 }

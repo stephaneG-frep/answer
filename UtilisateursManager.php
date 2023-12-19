@@ -45,16 +45,31 @@
 
         $requete->execute();
 
-        $requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'utilisateur');
+        $requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'utilisateurs');
 
         $utilisateur = $requete->fetch();
 
         return $utilisateur;
     }
 
+    public function mettreAjour(Utilisateurs $utilisateur)
+    {
+        $requete = $this->bddPDO-> prepare('UPDATE twister.utilisateur
+        SET nom = :nom, prenom = :prenom, tel = :tel, mail = :mail
+        WHERE id = :id');
+        $requete->bindvalue(':id', $utilisateur->getId(), PDO::PARAM_INT);
+        $requete->bindvalue(':nom', $utilisateur->getNom());
+        $requete->bindvalue(':prenom', $utilisateur->getPrenom());
+        $requete->bindvalue(':tel', $utilisateur->getTel());
+        $requete->bindvalue(':mail', $utilisateur->getMail());
 
+        $requete->execute();
+    }
 
-
+    public function supprimer($id)
+    {
+        $this->bddPDO->exec('DELETE FROM twister.utilisateur WHERE id =' .(int)$id);
+    }
 
 
 
