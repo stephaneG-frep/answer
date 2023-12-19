@@ -53,7 +53,7 @@ $manager = new UtilisateursManager($bddPDO);
         echo "Email invalide..<br>" ?>
             <tr><td>Email: </td><td><input type="text" name="mail" /></td></tr>
 
-            <tr><td><input type="submit" value="Enregistrer" name="enregistrer" /></td></tr>
+            <tr><td><input type="submit" value="Modifier" name="modifier" /></td></tr>
         </table>
     </form>
 
